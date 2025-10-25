@@ -18,8 +18,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteResponse crearCliente(ClienteRequest dto) {
-        Cliente mascota = clienteMapper.toEntity(dto);
-        Cliente guardado = clienteRepository.save(mascota);
+        Cliente cliente = clienteMapper.toEntity(dto);
+        Cliente guardado = clienteRepository.save(cliente);
         return clienteMapper.toDto(guardado);
     }
 

@@ -3,6 +3,8 @@ package com.example.ApiRestaurant.Web.DTO;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,7 +15,7 @@ import lombok.*;
 public class ClienteRequest {
     private String nombre;
     private String apellido;
-    private String edad ;
+    private Date fechaNacimiento;
     private String user;
     private String password;
 }

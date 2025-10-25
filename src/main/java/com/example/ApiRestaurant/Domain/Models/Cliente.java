@@ -4,6 +4,7 @@ package com.example.ApiRestaurant.Domain.Models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,8 +23,8 @@ public class Cliente {
     private String nombre;
     @Column(name="apellido_cliente")
     private String apellido;
-    @Column(name="edad")
-    private String edad ;
+    @Column(name="fecha_nacimiento")
+    private Date fechaNacimiento ;
     @Column(name="usuario")
     private String user;
     @Column(name="pass")

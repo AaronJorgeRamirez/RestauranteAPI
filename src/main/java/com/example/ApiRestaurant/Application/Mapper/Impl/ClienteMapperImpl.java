@@ -16,7 +16,7 @@ public class ClienteMapperImpl implements ClienteMapper {
                 .apellido(dto.getApellido())
                 .user(dto.getUser())
                 .password(dto.getPassword())
-                .edad(dto.getEdad())
+                .fechaNacimiento(dto.getFechaNacimiento())
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class ClienteMapperImpl implements ClienteMapper {
                 .apellido(entity.getApellido())
                 .user(entity.getUser())
                 .password(entity.getPassword())
-                .edad(entity.getEdad())
+                .fechaNacimiento(entity.getFechaNacimiento())
                 .build();
     }
 }
