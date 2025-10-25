@@ -24,6 +24,12 @@ public class LoginMapperImpl implements LoginMapper {
     public LoginResponse toDto(Cliente entity) {
         return LoginResponse.builder()
                 .fecha_ingreso(LocalDate.now())
+                .idCliente(entity.getId())
+                .nombre(entity.getNombre())
+                .apellido(entity.getApellido())
+                .user(entity.getUser())
+                .password(entity.getPassword())
+                .fechaNacimiento(entity.getFechaNacimiento())
                 .build();
     }
 }

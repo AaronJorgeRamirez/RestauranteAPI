@@ -20,10 +20,9 @@ public class LoginController {
             LoginResponse response = loginService.login(request);
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
-            // Devuelve error 401 o 404 según el caso
-            return ResponseEntity.status(401).body(
-                    new LoginResponse(e.getMessage(), null)
-            );
+            LoginResponse errorResponse = new LoginResponse();
+            errorResponse.setMensaje(e.getMessage());
+            return ResponseEntity.status(401).body(errorResponse);
         }
     }
 }
