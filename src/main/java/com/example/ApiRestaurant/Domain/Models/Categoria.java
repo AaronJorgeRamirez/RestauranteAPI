@@ -19,6 +19,5 @@ public class Categoria {
     private Long idCat;
     @Column(name="nombre_categoria")
     private String nomCat;
-    @OneToMany(mappedBy = "categoria",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Carta> cartaList;
+
 }

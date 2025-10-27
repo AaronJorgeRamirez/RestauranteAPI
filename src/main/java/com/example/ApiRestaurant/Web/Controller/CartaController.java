@@ -27,9 +27,9 @@ public class CartaController {
         return ResponseEntity.ok(cartaService.obtenerporTipo(idTipo));
     }
 
-    // Obtener carta por categoría
-    @GetMapping("/categoria/{idCategoria}")
-    public ResponseEntity<List<CartaResponse>> obtenerPorCategoria(@PathVariable Long idCategoria) {
-        return ResponseEntity.ok(cartaService.obtenerporCategoria(idCategoria));
-    }
+//    // Obtener carta por categoría
+//    @GetMapping("/categoria/{idCategoria}")
+//    public ResponseEntity<List<CartaResponse>> obtenerPorCategoria(@PathVariable Long idCategoria) {
+//        return ResponseEntity.ok(cartaService.obtenerporCategoria(idCategoria));
+//    }
 }

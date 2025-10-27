@@ -15,5 +15,4 @@ public class CartaResponse {
     private BigDecimal precio;
     private String imagen;
     private String nomTipo;
-    private String nomCategoria;
 }

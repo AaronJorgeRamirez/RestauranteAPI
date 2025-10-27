@@ -40,13 +40,13 @@ public class CartaServiceImpl implements CartaService {
 
     }
 
-    @Override
-    public List<CartaResponse> obtenerporCategoria(Long idCat) {
-        List<Carta> carta = cartaRep.findAllByCategoria_idCat(idCat);
-        return carta.stream()
-                .map(carMap::toDto)
-                .toList()
-                ;
-
-    }
+//    @Override
+//    public List<CartaResponse> obtenerporCategoria(Long idCat) {
+//        List<Carta> carta = cartaRep.findAllByCategoria_idCat(idCat);
+//        return carta.stream()
+//                .map(carMap::toDto)
+//                .toList()
+//                ;
+//
+//    }
 }

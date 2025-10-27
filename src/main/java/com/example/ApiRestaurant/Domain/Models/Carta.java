@@ -28,7 +28,4 @@ public class Carta {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_tipo")
     private Tipo tipo;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_categoria")
-    private Categoria categoria;
 }

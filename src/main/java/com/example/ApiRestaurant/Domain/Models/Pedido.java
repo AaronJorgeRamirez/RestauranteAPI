@@ -26,6 +26,8 @@ public class Pedido {
     private BigDecimal importeFinal;
     @Column(name="fecha_pedido")
     private LocalDate fecha;
+    @Column(name="numero_de_cuenta")
+    private Long numeroCuenta;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_cliente")
     private Cliente cliente;

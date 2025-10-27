@@ -7,5 +7,5 @@ import java.util.List;
 public interface CartaService {
     List<CartaResponse> lista();
     List<CartaResponse> obtenerporTipo(Long idTipo);
-    List<CartaResponse> obtenerporCategoria(Long idCategoria);
+//    List<CartaResponse> obtenerporCategoria(Long idCategoria);
 }

@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface CartaRepository extends JpaRepository<Carta,Long> {
     List<Carta> findAllByTipo_IdTipo(Long idTipo);
-    List<Carta> findAllByCategoria_idCat(Long idCat);
+//    List<Carta> findAllByCategoria_idCat(Long idCat);
     Optional<Carta> findByNombreCarta(String nombreCarta);
 }
