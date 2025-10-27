@@ -23,8 +23,6 @@ public class Carta {
     private String nombreCarta;
     @Column(name = "precio")
     private BigDecimal precio;
-    @Column(name = "nombre_imagen")
-    private String imagen;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_tipo")
     private Tipo tipo;

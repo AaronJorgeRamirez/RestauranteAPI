@@ -23,14 +23,10 @@ public class DetalleMapperImpl implements DetalleMapper {
     @Override
     public DetalleResponse toDto(DetallePedido entity) {
         return DetalleResponse.builder()
-                .DetallePedidoId(entity.getId())
                 .nombreCarta(entity.getCarta().getNombreCarta())
                 .precio(entity.getCarta().getPrecio())
                 .nomTipo(entity.getCarta().getTipo().getTipoPlato())
-                .nomCategoria(entity.getCarta().getCategoria().getNomCat())
                 .cantidad(entity.getCantidad())
-                .idPedido(entity.getPedido().getIdPedido())
-                .imagen(entity.getCarta().getImagen())
                 .subTotal(entity.getSubtotal())
                 .build();
     }

@@ -14,11 +14,7 @@ import java.math.BigDecimal;
 public class DetalleResponse {
     private String nombreCarta;
     private BigDecimal precio;
-    private String imagen;
     private String nomTipo;
-    private String nomCategoria;
     private int cantidad;
-    private Long idPedido;
-    private DetallePedidoId DetallePedidoId;
     private BigDecimal subTotal;
 }

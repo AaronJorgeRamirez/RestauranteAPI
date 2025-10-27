@@ -14,7 +14,6 @@ public class CartaMapperImpl implements CartaMapper {
                 .nombreCarta(entity.getNombreCarta())
                 .precio(entity.getPrecio())
                 .nomTipo(entity.getTipo().getTipoPlato())
-                .imagen(entity.getImagen())
                 .build();
     }
 }

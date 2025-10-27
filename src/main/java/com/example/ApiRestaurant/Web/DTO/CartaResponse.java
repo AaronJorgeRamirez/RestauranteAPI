@@ -13,6 +13,5 @@ public class CartaResponse {
     private Long idCarta;
     private String nombreCarta;
     private BigDecimal precio;
-    private String imagen;
     private String nomTipo;
 }
