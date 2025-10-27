@@ -27,6 +27,7 @@ public class PedidoMapperImpl implements PedidoMapper {
                 .fecha(entity.getFecha())
                 .importeFinal(entity.getImporteFinal())
                 .nombre(entity.getCliente().getNombre())
+                .apellido(entity.getCliente().getApellido())
                 .estado(entity.getEstado().name())
                 .build();
     }

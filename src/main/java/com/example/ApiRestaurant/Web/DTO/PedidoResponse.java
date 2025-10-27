@@ -14,6 +14,7 @@ public class PedidoResponse {
     private Long idPedido;
     private Long idCliente;
     private String nombre;
+    private String apellido;
     private BigDecimal importeFinal;
     private LocalDate fecha;
     private String estado;
