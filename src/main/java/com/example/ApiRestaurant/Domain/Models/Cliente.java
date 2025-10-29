@@ -4,6 +4,7 @@ package com.example.ApiRestaurant.Domain.Models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Cliente {
     @Column(name="apellido_cliente")
     private String apellido;
     @Column(name="fecha_nacimiento")
-    private Date fechaNacimiento ;
+    private LocalDate fechaNacimiento ;
     @Column(name="usuario")
     private String user;
     @Column(name="pass")

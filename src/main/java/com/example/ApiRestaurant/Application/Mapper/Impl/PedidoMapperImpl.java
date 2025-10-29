@@ -9,12 +9,15 @@ import com.example.ApiRestaurant.Web.DTO.PedidoResponse;
 
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class PedidoMapperImpl implements PedidoMapper {
     @Override
     public Pedido toEntity(PedidoRequest dto, Cliente cliente) {
         return Pedido.builder()
                 .cliente(cliente)
+                .fecha(LocalDate.now())
                 .estado(EstadoPedido.ABIERTO)
                 .build();
     }

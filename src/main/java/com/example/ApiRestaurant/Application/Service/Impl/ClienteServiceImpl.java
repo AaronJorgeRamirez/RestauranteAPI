@@ -18,6 +18,15 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteResponse crearCliente(ClienteRequest dto) {
+        if(clienteRepository.existsByPassword(dto.getPassword()) && !clienteRepository.existsByUser(dto.getUser())){
+            throw new RuntimeException("Esta contraseña ya existe");
+        }
+        if(clienteRepository.existsByUser(dto.getUser()) && !clienteRepository.existsByPassword(dto.getPassword()) ){
+            throw new RuntimeException("Este usuario ya existe");
+        }
+        if(clienteRepository.existsByUser(dto.getUser()) && clienteRepository.existsByPassword(dto.getPassword()) ){
+            throw new RuntimeException("Ambas credenciales ya existen");
+        }
         Cliente cliente = clienteMapper.toEntity(dto);
         Cliente guardado = clienteRepository.save(cliente);
         return clienteMapper.toDto(guardado);
