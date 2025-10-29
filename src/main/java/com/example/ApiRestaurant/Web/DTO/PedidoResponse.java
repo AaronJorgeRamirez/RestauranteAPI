@@ -2,6 +2,7 @@ package com.example.ApiRestaurant.Web.DTO;
 
 import lombok.*;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 @Getter
@@ -18,4 +19,6 @@ public class PedidoResponse {
     private BigDecimal importeFinal;
     private LocalDate fecha;
     private String estado;
+    private Long numeroPedido;
+    private String numeroCuenta;
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,9 @@ public class Pedido {
     @Column(name="fecha_pedido")
     private LocalDate fecha;
     @Column(name="numero_de_cuenta")
-    private Long numeroCuenta;
+    private String numeroCuenta;
+    @Column(name="numero_pedido_cliente")
+    private Long numeroPedido;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_cliente")
     private Cliente cliente;

@@ -17,6 +17,7 @@ public class PedidoMapperImpl implements PedidoMapper {
     public Pedido toEntity(PedidoRequest dto, Cliente cliente) {
         return Pedido.builder()
                 .cliente(cliente)
+                .numeroCuenta(dto.getNumeroCuenta())
                 .fecha(LocalDate.now())
                 .estado(EstadoPedido.ABIERTO)
                 .build();
@@ -32,6 +33,8 @@ public class PedidoMapperImpl implements PedidoMapper {
                 .nombre(entity.getCliente().getNombre())
                 .apellido(entity.getCliente().getApellido())
                 .estado(entity.getEstado().name())
+                .numeroPedido(entity.getNumeroPedido())
+                .numeroCuenta(entity.getNumeroCuenta())
                 .build();
     }
 }

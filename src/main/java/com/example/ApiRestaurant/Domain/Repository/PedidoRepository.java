@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     Optional<Pedido> findByCliente_IdAndEstado(Long idCliente, EstadoPedido Estado);
     List<Pedido> findAllByCliente_Id(Long idCliente);
+    Long countByCliente_Id(Long idCliente);
 }

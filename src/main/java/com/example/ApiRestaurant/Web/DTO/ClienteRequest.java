@@ -3,6 +3,7 @@ package com.example.ApiRestaurant.Web.DTO;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -15,7 +16,7 @@ import java.util.Date;
 public class ClienteRequest {
     private String nombre;
     private String apellido;
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String user;
     private String password;
 }

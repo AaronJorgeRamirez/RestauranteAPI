@@ -29,12 +29,19 @@ public class PedidoServiceImpl implements PedidoService {
         Cliente cliente = clienteRepository.findById(request.getIdCliente())
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
+        Long numero = pedidoRepository.countByCliente_Id(request.getIdCliente()) +1;
         Pedido pedido = Pedido.builder()
                 .cliente(cliente)
                 .fecha(LocalDate.now())
                 .importeFinal(BigDecimal.ZERO)
                 .estado(EstadoPedido.ABIERTO)
+                .numeroPedido(numero)
+                .numeroCuenta(request.getNumeroCuenta())
                 .build();
+
+        if(pedido.getNumeroCuenta()==null){
+            pedido.setNumeroCuenta("2000343422331919");
+        }
 
         pedidoRepository.save(pedido);
         return pedidoMapper.toDto(pedido);
