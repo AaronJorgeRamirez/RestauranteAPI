@@ -5,6 +5,7 @@ import com.example.ApiRestaurant.Domain.Models.DetallePedidoId;
 import com.example.ApiRestaurant.Web.DTO.DetalleRequest;
 import com.example.ApiRestaurant.Web.DTO.DetalleResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +42,17 @@ public class DetallePedidoController {
             @PathVariable Long idCarta) {
         detallePedidoService.eliminarDetalle(idPedido, idCarta);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/api/detalles/multiples/{idCliente}")
+    public ResponseEntity<List<DetalleResponse>> agregarMultiplesDetalles(
+            @PathVariable Long idCliente,
+            @RequestBody List<DetalleRequest> detallesRequest) {
+        try {
+            List<DetalleResponse> detalles = detallePedidoService.agregarMultiplesDetalles(idCliente, detallesRequest);
+            return ResponseEntity.ok(detalles);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -90,5 +91,60 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
         } else {
             throw new RuntimeException("El detalle del pedido no existe.");
         }
+    }
+    @Transactional
+    @Override
+    public List<DetalleResponse> agregarMultiplesDetalles(Long idCliente, List<DetalleRequest> detallesRequest) {
+        // 1️⃣ Buscar el pedido abierto del cliente
+        Pedido pedido = pedidoRepository.findByCliente_IdAndEstado(idCliente, EstadoPedido.ABIERTO)
+                .orElseThrow(() -> new RuntimeException("No hay pedido abierto para este cliente."));
+
+        List<DetalleResponse> detallesResponse = new ArrayList<>();
+
+        // 2️⃣ Recorrer todos los detalles del request
+        for (DetalleRequest request : detallesRequest) {
+
+            // Buscar la carta
+            Carta carta = cartaRepository.findByNombreCarta(request.getNombreCarta())
+                    .orElseThrow(() -> new RuntimeException("Plato no encontrado: " + request.getNombreCarta()));
+
+            // Crear ID compuesto
+            DetallePedidoId detalleId = new DetallePedidoId(pedido.getIdPedido(), carta.getIdCarta());
+
+            // Buscar si ya existe el detalle
+            DetallePedido detalle = detalleRepository.findById(detalleId).orElse(null);
+
+            if (detalle != null) {
+                // Ya existe → sumar cantidad
+                detalle.setCantidad(detalle.getCantidad() + request.getCantidad());
+                detalle.setSubtotal(carta.getPrecio().multiply(BigDecimal.valueOf(detalle.getCantidad())));
+            } else {
+                // No existe → crear nuevo
+                detalle = DetallePedido.builder()
+                        .id(detalleId)
+                        .pedido(pedido)
+                        .carta(carta)
+                        .cantidad(request.getCantidad()) // 👈 aquí usamos el valor real
+                        .subtotal(carta.getPrecio().multiply(BigDecimal.valueOf(request.getCantidad())))
+                        .build();
+            }
+
+            detalleRepository.save(detalle);
+
+            // Añadir al response
+            detallesResponse.add(detalleMapper.toDto(detalle));
+        }
+
+        // 3️⃣ Recalcular total del pedido
+        BigDecimal total = detalleRepository.findByIdPedido(pedido.getIdPedido())
+                .stream()
+                .map(DetallePedido::getSubtotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        pedido.setImporteFinal(total);
+        pedidoRepository.save(pedido);
+
+        // 4️⃣ Devolver todos los detalles insertados
+        return detallesResponse;
     }
 }
