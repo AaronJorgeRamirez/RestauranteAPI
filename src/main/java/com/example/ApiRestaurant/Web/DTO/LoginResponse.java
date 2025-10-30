@@ -17,7 +17,7 @@ public class LoginResponse {
     private Long idCliente;
     private String nombre;
     private String apellido;
-    private LocalDate fechaNacimiento ;
+    private LocalDate fechaNacimiento;
     private String user;
     private String password;
 }

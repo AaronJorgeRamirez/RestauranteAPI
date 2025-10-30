@@ -43,17 +43,18 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
         DetallePedido detalle = detalleRepository.findById(detalleId).orElse(null);
 
         if (detalle != null) {
-            // ya existe → aumentar cantidad y subtotal
-            detalle.setCantidad(detalle.getCantidad() + 1);
-            detalle.setSubtotal(carta.getPrecio().multiply(BigDecimal.valueOf(detalle.getCantidad())));
+            // 🔹 Ya existe → actualiza la cantidad sumando la nueva
+            int nuevaCantidad = detalle.getCantidad() + request.getCantidad();
+            detalle.setCantidad(nuevaCantidad);
+            detalle.setSubtotal(carta.getPrecio().multiply(BigDecimal.valueOf(nuevaCantidad)));
         } else {
-            // no existe → crear nuevo detalle
+            // 🔹 No existe → crear nuevo detalle con la cantidad enviada
             detalle = DetallePedido.builder()
                     .id(detalleId)
                     .pedido(pedido)
                     .carta(carta)
-                    .cantidad(1)
-                    .subtotal(carta.getPrecio())
+                    .cantidad(request.getCantidad())
+                    .subtotal(carta.getPrecio().multiply(BigDecimal.valueOf(request.getCantidad())))
                     .build();
         }
 
