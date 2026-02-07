@@ -3,14 +3,14 @@ spring:
     name: ApiRestaurant
 
   datasource:
-    url: jdbc:mysql://shinkansen.proxy.rlwy.net:59246/railway
+    url: jdbc:mysql://yamanote.proxy.rlwy.net:14071/railway?useSSL=false&serverTimezone=UTC
     username: root
-    password: pwotPXgGBhNTMQgWIaKBpZSPzaQMrPFR
+    password: YWdZtdDmyqsedhiOXbpzMEFHMHkvQtWG
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: none  # o "update" si quieres que actualice las tablas
+      ddl-auto: none    # o "none" si no quieres que Spring cree/actualice tablas automáticamente
     show-sql: true
     properties:
       hibernate:
