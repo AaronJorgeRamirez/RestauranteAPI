@@ -29,7 +29,6 @@ public class DetallePedidoController {
         return ResponseEntity.ok(response);
     }
 
-    // 📃 Listar todos los detalles de un pedido específico
     @GetMapping("/pedido/{idPedido}")
     public ResponseEntity<List<DetalleResponse>> listarDetallesPorPedido(@PathVariable Long idPedido) {
         List<DetalleResponse> detalles = detallePedidoService.listarDetallesPorPedido(idPedido);
