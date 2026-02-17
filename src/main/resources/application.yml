@@ -3,7 +3,7 @@ spring:
     name: ApiRestaurant
 
   datasource:
-    url: jdbc:mysql://root:YWdZtdDmyqsedhiOXbpzMEFHMHkvQtWG@yamanote.proxy.rlwy.net:14071/railway
+    url: jdbc:mysql://yamanote.proxy.rlwy.net:14071/railway
     username: root
     password: YWdZtdDmyqsedhiOXbpzMEFHMHkvQtWG
     driver-class-name: com.mysql.cj.jdbc.Driver
